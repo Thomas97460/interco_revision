@@ -1,0 +1,40 @@
+network:
+  version: 2
+  ethernets:
+    enp0s1:
+      dhcp4: false
+      dhcp6: false
+      accept-ra: false
+      nameservers:
+        addresses:
+          - 172.16.0.2
+          - 2001:678:3fc:3::2
+
+  vlans:
+    enp0s1.137: # VLAN rouge
+      id: 137
+      link: enp0s1
+      addresses:
+        - 192.168.137.131/26
+        - 2001:678:3fc:89::3/64
+      routes:
+        - to: default
+          via: 192.168.137.129
+        - to: "::/0"
+          via: "fe80:89::1"
+          on-link: true
+    enp0s1.1644:
+      id: 1644
+      link: enp0s1
+      addresses:
+        - 172.19.10.11/28
+        - fe80:284::3/64
+    enp0s1.1728: # VLAN violet
+      id: 1728
+      link: enp0s1
+      addresses:
+        - fe80:2D8::3/64
+    enp0s1.1729: # VLAN orange
+      id: 1729
+      link: enp0s1
+      addresses: []

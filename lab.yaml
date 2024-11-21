@@ -1,0 +1,12 @@
+kvm:
+  vms:
+    - vm_name: Hub280
+      master_image: debian-testing-amd64.qcow2 # master image to be used
+      force_copy: false # force copy the master image to the VM image
+      memory: 4096
+      tapnum: 756
+    - vm_name: Spoke281
+      master_image: debian-testing-amd64.qcow2 # master image to be used
+      force_copy: false # force copy the master image to the VM image
+      memory: 4096
+      tapnum: 759

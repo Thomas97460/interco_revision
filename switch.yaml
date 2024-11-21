@@ -1,0 +1,12 @@
+ovs:
+  switches:
+    - name: dsw-host
+      ports:
+        - name: tap756 # Hub
+          type: OVSPort
+          vlan_mode: trunk
+          trunks: [137,1644,1728,1729]
+        - name: tap759 # Spoke
+          type: OVSPort
+          vlan_mode: trunk
+          trunks: [60, 1728,1729] # Avec VLAN d'accès temporaire

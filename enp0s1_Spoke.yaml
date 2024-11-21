@@ -1,0 +1,39 @@
+network:
+  version: 2
+  ethernets:
+    enp0s1:
+      dhcp4: false
+      dhcp6: false
+      accept-ra: false
+      # nameservers:
+      #   addresses:
+      #     - 172.16.0.2
+      #     - 2001:678:3fc:3::2
+    openvswitch: {}
+
+  bridges:
+    asw-host:
+      openvswitch: {}
+
+  vlans:
+    enp0s1.1728: # VLAN violet
+      id: 1728
+      link: enp0s1
+      addresses:
+        - fe80:2D8::4/64
+    enp0s1.1729: # VLAN orange
+      id: 1729
+      link: enp0s1
+      addresses: []
+    # enp0s1.60: # VLAN accès temporaire
+    #   id: 60
+    #   link: enp0s1
+    #   dhcp4: true
+    #   dhcp6: false
+    #   accept-ra: true
+    vlan154:     # VLAN vert
+      id: 154
+      link: asw-host
+      addresses:
+        - 100.64.54.1/24
+        - fda0:7a62:36::1/64
